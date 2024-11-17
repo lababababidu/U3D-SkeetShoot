@@ -6,9 +6,7 @@ using UnityEngine;
 public class ScoreCounter : MonoBehaviour
 {
     public int score;
-
     private SkeetFactory skeetFactory;
-    
     private AudioSource audioSource;
 
     // Start is called before the first frame update
@@ -56,10 +54,11 @@ public class ScoreCounter : MonoBehaviour
         // skeetFactory.AddSkeetToList(skeet , skeet.GetComponent<SkeetModel>().type);
     }
 
-    public void SkeetLanded(GameObject gameObject)
+    public void SkeetLanded(GameObject skeet)
     {
         score -= 3;
         Debug.Log("score:"+score);
+        skeetFactory.AddSkeetToList(skeet , skeet.GetComponent<SkeetModel>().type);
     }
 
     IEnumerator CallMethodWithDelay(float delay, GameObject skeet,int listnum)

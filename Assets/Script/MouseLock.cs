@@ -13,10 +13,6 @@ public class MouseLock : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void OnGUI(){
-        
-    }
-
     void Update()
     {
         // 获取鼠标输入

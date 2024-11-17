@@ -40,20 +40,9 @@ public class SkeetModel : MonoBehaviour
         {
             Debug.Log("skeet landed!");
             isColliding = true;
-            transform.position = skeetFactory.sample1.transform.position + new Vector3(0, 1.5f - 9*0.7f, 0);
+            transform.position = skeetFactory.sample1.transform.position + new Vector3(0, 1.5f - 9*0.7f, 0);//先将飞碟移走，防止碰撞多次
             scoreCounter.SkeetLanded(gameObject);
-            if(type == 1){
-                // transform.position = skeetFactory.sample1.transform.position + new Vector3(0, 1.5f + 9*0.7f, 0);
-                skeetFactory.AddSkeetToList(gameObject,1);
-            }
-            else if(type == 2){
-                // transform.position = skeetFactory.sample2.transform.position + new Vector3(0, 1.5f + 9*0.7f, 0);
-                skeetFactory.AddSkeetToList(gameObject,2);
-            }
-            else{
-                // transform.position = skeetFactory.sample3.transform.position + new Vector3(0, 1.5f + 9*0.7f, 0);
-                skeetFactory.AddSkeetToList(gameObject,3);
-            }
+
         }
         else{
             Debug.Log("skeet crash!");

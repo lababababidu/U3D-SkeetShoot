@@ -7,8 +7,6 @@ public class RaycastShooting : MonoBehaviour
     public GameObject bulletsample;
     public Camera playerCamera; // 玩家摄像头
     public float rayDistance = 100f; // 射线的最大距离
-    // public GameObject hitEffect; // 射中效果（可以是粒子效果）
-    // public LineRenderer lineRenderer;
     private ScoreCounter scoreCounter;
     private AudioSource audioSource;
 
@@ -61,11 +59,8 @@ public class RaycastShooting : MonoBehaviour
         // 发射射线并检测是否击中物体
         if (Physics.Raycast(ray, out hit, rayDistance))
         {
-            // 如果击中物体，更新射线终点为击中点
-            // lineRenderer.SetPosition(1, hit.point);
             Debug.Log("Hit: " + hit.collider.name);
             if(hit.collider.tag == "Skeet"){
-                // hit.rigidbody.AddExplosionForce(15f,playerCamera.transform.position,100f);
                 Vector3 force = hit.point - playerCamera.transform.position;
                 force.Normalize();
                 force *= 270;
@@ -73,22 +68,7 @@ public class RaycastShooting : MonoBehaviour
                 scoreCounter.HitSkeet(hit.collider.gameObject);
             }
         }
-        // else
-        // {
-        //     // 如果没有击中，射线终点设置为最大距离
-        //     // lineRenderer.SetPosition( 1 , ray.origin + rayDirection * rayDistance );
-        // }
 
-        // GameObject bullet = Instantiate(bulletsample, playerCamera.transform.position, Quaternion.identity);
-        // Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-        // if (bulletRb != null)
-        // {
-        //     float bulletSpeed = 90f;
-        //     bulletRb.velocity = rayDirection * bulletSpeed;
-        // }
-
-        // 更新射线起点为摄像头位置
-        // lineRenderer.SetPosition(0, ray.origin);
     }
 
 
